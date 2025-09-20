@@ -1,0 +1,88 @@
+<?php 
+$logo = "img/magentaLogo.png"; 
+$currentPage = basename($_SERVER['PHP_SELF']);
+?>
+
+<header class="bg-white shadow-sm sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex justify-between items-center h-20">
+            <!-- Logo -->
+            <a href="home.php" class="flex items-center gap-3">
+                <img src="<?php echo $logo; ?>" alt="2GO Logo" class="h-8 w-auto object-contain">
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex space-x-8 font-medium">
+                <a href="home.php" class="<?php echo ($currentPage == 'home.php') ? 'text-pink-600 font-bold' : 'text-gray-700 hover:text-pink-600'; ?>">Home</a>
+                <a href="accommodation.php" class="<?php echo ($currentPage == 'accommodation.php') ? 'text-pink-600 font-bold' : 'text-gray-700 hover:text-pink-600'; ?>">Accommodation</a>
+                <a href="outlets.php" class="<?php echo ($currentPage == 'outlets.php') ? 'text-pink-600 font-bold' : 'text-gray-700 hover:text-pink-600'; ?>">Outlets</a>
+                <a href="contact.php" class="<?php echo ($currentPage == 'contact.php') ? 'text-pink-600 font-bold' : 'text-gray-700 hover:text-pink-600'; ?>">Contact Us</a>
+                <a href="faqs.php" class="<?php echo ($currentPage == 'faqs.php') ? 'text-pink-600 font-bold' : 'text-gray-700 hover:text-pink-600'; ?>">FAQs</a>
+            </nav>
+
+            <!-- Mobile Hamburger -->
+            <div class="md:hidden">
+                <button id="menu-btn" aria-label="Toggle Menu" class="text-gray-800 focus:outline-none text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+        <div class="px-4 py-6 space-y-4 flex flex-col items-center font-medium">
+            <a href="home.php" class="block hover:text-pink-600">Home</a>
+            <a href="accommodation.php" class="block hover:text-pink-600">Accommodation</a>
+            <a href="outlets.php" class="block hover:text-pink-600">Outlets</a>
+            <a href="contact.php" class="block hover:text-pink-600">Contact Us</a>
+            <a href="faqs.php" class="block hover:text-pink-600">FAQs</a>
+        </div>
+    </div>
+
+    <!-- Active Link + Mobile Toggle Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+        const navLinks = document.querySelectorAll("header nav a, #mobile-menu a");
+        const sections = document.querySelectorAll("section[id]");
+        const menuBtn = document.getElementById("menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        // Toggle mobile menu
+        menuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+
+        function removeActive() {
+            navLinks.forEach(link => link.classList.remove("text-pink-600", "font-bold"));
+        }
+
+        // Clicking
+        navLinks.forEach(link => {
+            link.addEventListener("click", () => {
+            removeActive();
+            link.classList.add("text-pink-600", "font-bold");
+            mobileMenu.classList.add("hidden"); // close menu after click
+            });
+        });
+
+        // Scrolling
+        window.addEventListener("scroll", () => {
+            let current = "";
+            sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            if (scrollY >= sectionTop) {
+                current = section.getAttribute("id");
+            }
+            });
+
+            navLinks.forEach(link => {
+            link.classList.remove("text-pink-600", "font-bold");
+            if (link.getAttribute("href") === "#" + current) {
+                link.classList.add("text-pink-600", "font-bold");
+            }
+            });
+        });
+        });
+    </script>
+</header>
