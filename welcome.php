@@ -1,35 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-        <title>2GO - Travel</title>
-        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    </head>
-
-
-    <body class="min-w-[320px]">
-        <div id="preloader" class="fixed inset-0 bg-white flex items-center justify-center z-50 transition-opacity duration-500">
-            <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-pink-600 border-solid"></div>
-        </div>
-
-        <script>
-            window.addEventListener("load", () => {
-                const preloader = document.getElementById("preloader");
-                    preloader.classList.add("opacity-0");
-                    setTimeout(() => {
-                        preloader.style.display = "none";
-                    }, 1000);
-            });
-        </script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Home</title>
+</head>
+<body class="min-w-[320px]">
+        <?php
+            $logo = "img/magentaLogo.png"; 
+        ?>
 
         <header class="bg-white shadow-sm sticky top-0 z-40">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="flex justify-between items-center h-20">
                     <!-- Logo -->
                     <a href="#home" class="flex items-center gap-3">
-                        <img src="Img/magentaLogo.png" alt="2GO Logo" class="h-8 w-auto object-contain">
+                        <img src="<?php echo $logo; ?>" alt="2GO Logo" class="h-8 w-auto object-contain">
                     </a>
 
                     <!-- Desktop Nav -->
@@ -43,7 +31,7 @@
 
                     <!-- Mobile Hamburger -->
                     <div class="md:hidden">
-                        <button id="menu-btn" class="text-gray-800 focus:outline-none text-2xl">
+                        <button id="menu-btn" aria-label="Toggle Menu" class="text-gray-800 focus:outline-none text-2xl">
                             <i class="fas fa-bars"></i>
                         </button>
                     </div>
@@ -108,8 +96,6 @@
             </script>
         </header>
 
-
-        
         <!-- HOME SECTION -->
         <section id="home" class="relative overflow-hidden bg-gradient-to-b from-white via-white to-pink-50 py-20">
             <!-- Decorative blur circle -->
@@ -217,10 +203,10 @@
 
             </script>
         </section>
-
-
+        
         <!-- ACCOMMODATION SECTION -->
         <section id="accommodation" class="bg-white py-20">
+            <div class="absolute -right-[10%] -top-[12%] w-[520px] h-[520px] bg-[#E0006F]/10 rounded-full blur-3xl" aria-hidden="true"></div>
             <div class="max-w-6xl mx-auto px-6 text-center">
                 <h2 class="text-3xl font-bold mb-6 text-gray-800">Meet The Fleet</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto mb-12">
@@ -301,9 +287,9 @@
             </div>
         </section>
 
-
         <!-- OUTLETS SECTION -->
-        <section id="outlets" class="bg-pink-50 py-20">
+        <section id="outlets" class="bg-pink-50 py-20"> 
+            <div class="absolute -right-[10%] -top-[12%] w-[520px] h-[520px] bg-[#E0006F]/10 rounded-full blur-3xl" aria-hidden="true"></div>
             <div class="max-w-6xl mx-auto px-6 text-center">
                 <h2 class="text-3xl font-bold mb-6 text-gray-800">2GO Travel Outlets</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto mb-12">
@@ -356,17 +342,15 @@
                             echo '<h3 class="font-semibold text-lg mb-1">'.$out['name'].'</h3>';
                             echo '<p class="text-gray-600 text-sm mb-1">'.$out['address'].'</p>';
 
-                            //Email
                             echo '<p class="text-gray-600 text-sm mb-1 flex items-center justify-center gap-2">';
-                            echo '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 flex-shrink-0">';
+                            echo '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">';
                             echo '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />';
                             echo '</svg>';
                             echo '<a href="mailto:'.$out['email'].'" class="hover:text-pink-600">'.$out['email'].'</a>';
                             echo '</p>';
 
-                            //Phone
                             echo '<p class="text-gray-600 text-sm mb-2 flex items-center justify-center gap-2">';
-                            echo '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 flex-shrink-0">';
+                            echo '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">';
                             echo '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />';
                             echo '</svg>';
                             echo '<a href="tel:'.$out['phone'].'" class="hover:text-pink-600">'.$out['phone'].'</a>';
@@ -382,9 +366,9 @@
             </div>
         </section>
 
-
         <!-- CONTACT SECTION -->
         <section id="contact" class="py-20">
+            <div class="absolute -right-[10%] -top-[12%] w-[520px] h-[520px] bg-[#E0006F]/10 rounded-full blur-3xl" aria-hidden="true"></div>
             <div class="max-w-6xl mx-auto px-6">
                 <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">Get in Touch</h2>
                 <p class="text-gray-600 text-center max-w-2xl mx-auto mb-12">
@@ -407,7 +391,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
                                 </svg>
-                                <a href="tel:+63285287000" class="hover:text-pink-600">(+63) 23 456-7890</a>
+                                <a href="tel:+63234567890" class="hover:text-pink-600">(+63) 23 456-7890</a>
                             </p>
                         </div>
 
@@ -426,13 +410,13 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
                                 </svg>
-                                <a href="tel:+639224352642" class="hover:text-pink-600">(+63) 123 456-7890</a>
+                                <a href="tel:+63234567890" class="hover:text-pink-600">(+63) 123 456-7890</a>
                             </p>
                             <p class="text-gray-600 text-sm flex items-center gap-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
                                 </svg>
-                                <a href="tel:+63285287171" class="hover:text-pink-600">(+63) 123 456-7890 (Local: 80326S)</a>
+                                <a href="tel:+63234567890" class="hover:text-pink-600">(+63) 123 456-7890 (Local: 80326S)</a>
                             </p>
                         </div>
                     </div>
@@ -443,83 +427,70 @@
             </div>
         </section>
 
-
         <!-- FAQs Section -->
         <section id="faqs" class="bg-pink-50 py-20">
+            <div class="absolute -right-[10%] -top-[12%] w-[520px] h-[520px] bg-[#E0006F]/10 rounded-full blur-3xl" aria-hidden="true"></div>
             <div class="max-w-4xl mx-auto px-6">
                 <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">FAQs</h2>
                 <p class="text-gray-600 text-center max-w-2xl mx-auto mb-12">
-                    Find answers to the most common questions about booking, travel policies, and onboard services.
+                        Find answers to the most common questions about booking, travel policies, and onboard services.
                 </p>
                 <div class="space-y-4">
+
                     <!-- FAQ Item -->
-                    <details class="faq-item bg-white p-6 rounded-2xl shadow group">
+                    <details class="bg-white p-6 rounded-2xl shadow group">
                         <summary class="text-[#E0006F] font-semibold mb-2 flex justify-between items-center cursor-pointer list-none">
                             How can I book a ticket with 2GO Travel?
-                            <i class="fa-solid fa-chevron-down transition-transform duration-300 group-open:rotate-180 p-2"></i>
+                            <i class="fa-solid fa-chevron-down transition-transform duration-300 group-open:rotate-180"></i>
                         </summary>
                         <p class="text-gray-600 text-sm mt-2">
                             You can book tickets online through the official 2GO Travel website, at any 2GO outlet nationwide, or through accredited travel agents.
                         </p>
                     </details>
 
-                    <details class="faq-item bg-white p-6 rounded-2xl shadow group">
+                    <details class="bg-white p-6 rounded-2xl shadow group">
                         <summary class="text-[#E0006F] font-semibold mb-2 flex justify-between items-center cursor-pointer list-none">
                             How do I check my booking or ticket status?
-                            <i class="fa-solid fa-chevron-down transition-transform duration-300 group-open:rotate-180 p-2"></i>
+                            <i class="fa-solid fa-chevron-down transition-transform duration-300 group-open:rotate-180"></i>
                         </summary>
                         <p class="text-gray-600 text-sm mt-2">
                             Visit the “Manage Booking” section on the 2GO Travel website and enter your booking reference number, or contact the hotline for assistance.
                         </p>
                     </details>
 
-                    <details class="faq-item bg-white p-6 rounded-2xl shadow group">
+                    <details class="bg-white p-6 rounded-2xl shadow group">
                         <summary class="text-[#E0006F] font-semibold mb-2 flex justify-between items-center cursor-pointer list-none">
                             What accommodations are available on board?
-                            <i class="fa-solid fa-chevron-down transition-transform duration-300 group-open:rotate-180 p-2"></i>
+                            <i class="fa-solid fa-chevron-down transition-transform duration-300 group-open:rotate-180"></i>
                         </summary>
                         <p class="text-gray-600 text-sm mt-2">
                             2GO Travel offers a variety of accommodations including Economy, Tourist Class, Business Class, and private suites to fit your budget and comfort needs.
                         </p>
                     </details>
 
-                    <details class="faq-item bg-white p-6 rounded-2xl shadow group">
+                    <details class="bg-white p-6 rounded-2xl shadow group">
                         <summary class="text-[#E0006F] font-semibold mb-2 flex justify-between items-center cursor-pointer list-none">
                             Can I bring luggage on board?
-                            <i class="fa-solid fa-chevron-down transition-transform duration-300 group-open:rotate-180 p-2"></i>
+                            <i class="fa-solid fa-chevron-down transition-transform duration-300 group-open:rotate-180"></i>
                         </summary>
                         <p class="text-gray-600 text-sm mt-2">
                             Yes, passengers are allowed baggage within the free allowance depending on their ticket type. Excess baggage may be subject to additional fees.
                         </p>
                     </details>
 
-                    <details class="faq-item bg-white p-6 rounded-2xl shadow group">
+                    <details class="bg-white p-6 rounded-2xl shadow group">
                         <summary class="text-[#E0006F] font-semibold mb-2 flex justify-between items-center cursor-pointer list-none">
                             How can I check sailing schedules?
-                            <i class="fa-solid fa-chevron-down transition-transform duration-300 group-open:rotate-180 p-2"></i>
+                            <i class="fa-solid fa-chevron-down transition-transform duration-300 group-open:rotate-180"></i>
                         </summary>
                         <p class="text-gray-600 text-sm mt-2">
                             Sailing schedules are posted on the official 2GO Travel website and Facebook page. You may also call the hotline or visit the nearest outlet for updated schedules.
                         </p>
                     </details>
+
                 </div>
             </div>
         </section>
-
-        <script>
-            const faqs = document.querySelectorAll(".faq-item");
-
-            faqs.forEach((faq) => {
-                faq.addEventListener("toggle", () => {
-                    if (faq.open) {
-                        faqs.forEach((other) => {
-                            if (other !== faq) {other.removeAttribute("open");}
-                        });
-                    }
-                });
-            });
-        </script>
-
 
         <!-- FOOTER -->
         <footer class="bg-[#E0006F] text-white py-8">
@@ -549,11 +520,11 @@
                 <div>
                     <h4 class="font-semibold mb-3">Quick Links</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#home" class="hover:underline">Home</a></li>
-                        <li><a href="#accommodation" class="hover:underline">Accommodation</a></li>
-                        <li><a href="#outlets" class="hover:underline">Outlets</a></li>
-                        <li><a href="#contact" class="hover:underline">Contact Us</a></li>
-                        <li><a href="#faqs" class="hover:underline">Frequently Asked Questions</a></li>
+                        <li><a href="home.php" class="hover:underline">Home</a></li>
+                        <li><a href="accommodation.php" class="hover:underline">Accommodation</a></li>
+                        <li><a href="outlets.php" class="hover:underline">Outlets</a></li>
+                        <li><a href="contact.php" class="hover:underline">Contact Us</a></li>
+                        <li><a href="faqs.php" class="hover:underline">Frequently Asked Questions</a></li>
                     </ul>
                 </div>
 
@@ -572,7 +543,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
                         </svg>
-                        <a href="tel:+63287729700">+63 2 8772 9700</a>
+                        <a href="tel:+63287729700">+63 23 456-7890</a>
                     </p>
 
                     <p class="text-sm flex items-center gap-2">
@@ -599,5 +570,5 @@
             </div>
             <div class="text-center text-sm mt-6 text-pink-100">&copy; 2025 2GO Group, Inc. All r\Rights Reserved.</div>
         </footer>
-    </body>
+</body>
 </html>
